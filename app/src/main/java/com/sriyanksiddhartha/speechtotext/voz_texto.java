@@ -1,6 +1,8 @@
 package com.sriyanksiddhartha.speechtotext;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.os.Vibrator;
@@ -14,12 +16,20 @@ import android.view.MenuItem;
 public class voz_texto extends AppCompatActivity {
     private TextView txvResult;
     private Vibrator vibrator;
+    private VolumeButtonReceiver volumeButtonReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voz_texto);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Voz a texto");
+
+        // Registra el receptor de eventos para las teclas de volumen
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        volumeButtonReceiver = new VolumeButtonReceiver();
+        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
+        registerReceiver(volumeButtonReceiver, filter);
+
         txvResult = (TextView) findViewById(R.id.txvResult);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE); // Inicializa el objeto Vibrator
     }
@@ -57,5 +67,13 @@ public class voz_texto extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onDestroy() {
+        // Asegúrate de desregistrar el receptor de eventos al destruir la actividad
+        if (volumeButtonReceiver != null) {
+            unregisterReceiver(volumeButtonReceiver);
+        }
+        super.onDestroy();
     }
 }

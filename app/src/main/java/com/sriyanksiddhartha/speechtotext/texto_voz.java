@@ -1,20 +1,31 @@
 package com.sriyanksiddhartha.speechtotext;
 
+import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.EditText;
+
 public class texto_voz extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private EditText editText;
     private View buttonSpeak;
     private View btnBorrar;
+    private VolumeButtonReceiver volumeButtonReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.texto_voz);
+
+
+        // Registra el receptor de eventos para las teclas de volumen
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        volumeButtonReceiver = new VolumeButtonReceiver();
+        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
+        registerReceiver(volumeButtonReceiver, filter);
 
         // Habilitar el botón de "Atrás" en la barra superior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -67,8 +78,11 @@ public class texto_voz extends AppCompatActivity {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
+        if (volumeButtonReceiver != null) {
+            unregisterReceiver(volumeButtonReceiver);
+        }
         super.onDestroy();
     }
-        // Resto del código de la actividad...
+
 
 }
