@@ -8,6 +8,7 @@ import android.speech.RecognizerIntent;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class voz_texto extends AppCompatActivity {
     private TextView txvResult;
     private Vibrator vibrator;
     private VolumeButtonReceiver volumeButtonReceiver;
+    private TextToSpeech textToSpeech;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,21 @@ public class voz_texto extends AppCompatActivity {
 
         txvResult = (TextView) findViewById(R.id.txvResult);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE); // Inicializa el objeto Vibrator
+
+        // Inicializa el motor TTS para el mensaje de bienvenida
+        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    // El motor TTS está listo para usar.
+                    String mensaje = "Modo Transcripción";
+                    textToSpeech.speak(mensaje, TextToSpeech.QUEUE_FLUSH, null, null);
+                } else {
+                    // El motor TTS no está disponible, maneja el error aquí.
+                }
+            }
+        });
+
     }
 
     public void getSpeechInput(View view) {

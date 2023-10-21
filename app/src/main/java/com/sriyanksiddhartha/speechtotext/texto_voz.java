@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import java.util.Locale;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -39,6 +40,8 @@ public class texto_voz extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS) {
+                    String mensaje = "Modo Texto a Voz";
+                    textToSpeech.speak(mensaje, TextToSpeech.QUEUE_FLUSH, null, null);
                     // El motor TTS está listo para usar.
                 } else {
                     // El motor TTS no está disponible, maneja el error aquí.
