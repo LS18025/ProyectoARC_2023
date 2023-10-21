@@ -22,7 +22,7 @@ public class voz_texto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voz_texto);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Voz a texto");
+        setTitle("Modo transcripción");
 
         // Registra el receptor de eventos para las teclas de volumen
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
