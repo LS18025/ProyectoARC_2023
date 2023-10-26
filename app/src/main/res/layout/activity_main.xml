@@ -1,32 +1,40 @@
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:background="#FFFFFF"
+	android:orientation="horizontal">
 
 
 	<Button
 		android:id="@+id/btnVoz"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="370dp"
+		android:layout_height="230dp"
 		android:layout_alignParentStart="true"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentTop="true"
-		android:layout_marginStart="64dp"
-		android:layout_marginLeft="64dp"
-		android:layout_marginTop="308dp"
-		android:text="Voz a texto" />
+		android:layout_marginStart="20dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="408dp"
+
+		android:background="@drawable/ovaloback"
+		android:fontFamily="sans-serif-black"
+		android:text="Voz a texto"
+		android:textColor="#FFFFFF" />
 
 	<Button
 		android:id="@+id/btnTexto"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="370dp"
+		android:layout_height="230dp"
 		android:layout_alignParentTop="true"
 		android:layout_alignParentEnd="true"
 		android:layout_alignParentRight="true"
-		android:layout_marginTop="308dp"
-		android:layout_marginEnd="77dp"
-		android:layout_marginRight="77dp"
-		android:text="Texto a Voz" />
+		android:layout_marginTop="144dp"
+		android:layout_marginEnd="21dp"
+		android:layout_marginRight="21dp"
+		android:background="@drawable/ovalce"
+		android:fontFamily="sans-serif-black"
+		android:text="Texto a Voz"
+		android:textColor="#FFFFFF" />
+
 
 </RelativeLayout>

@@ -24,7 +24,7 @@ public class voz_texto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voz_texto);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Modo transcripción");
+        setTitle("Modo voz a texto");
 
         // Registra el receptor de eventos para las teclas de volumen
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
@@ -41,7 +41,7 @@ public class voz_texto extends AppCompatActivity {
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS) {
                     // El motor TTS está listo para usar.
-                    String mensaje = "Modo Transcripción";
+                    String mensaje = "Modo voz a texto";
                     textToSpeech.speak(mensaje, TextToSpeech.QUEUE_FLUSH, null, null);
                 } else {
                     // El motor TTS no está disponible, maneja el error aquí.

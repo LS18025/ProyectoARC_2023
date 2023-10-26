@@ -1,9 +1,8 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alwaysDrawnWithCache="true"
     android:orientation="vertical">
-
 
 
     <EditText
@@ -17,22 +16,26 @@
 
     <Button
         android:id="@+id/buttonSpeak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="318dp"
-        android:text="Hablar" />
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/ovaloback"
+        android:text="Hablar"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnLimpiar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="318dp"
-        android:layout_marginEnd="77dp"
-        android:text="BORRAR" />
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="55dp"
+        android:background="@drawable/ovalo"
+        android:text="BORRAR"
+        android:textColor="#D20000" />
 
 </RelativeLayout>
