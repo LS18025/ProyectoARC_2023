@@ -31,7 +31,7 @@ public class texto_voz extends AppCompatActivity {
         // Habilitar el botón de "Atrás" en la barra superior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Establece el título personalizado para esta actividad
-        setTitle("Modo Narrador");
+        setTitle("Modo Texto a voz");
         editText = (EditText) findViewById(R.id.editText);
         buttonSpeak = findViewById(R.id.buttonSpeak);
         btnBorrar = findViewById(R.id.btnLimpiar);
