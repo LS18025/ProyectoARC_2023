@@ -20,13 +20,7 @@ public class texto_voz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.texto_voz);
-
-
-        // Registra el receptor de eventos para las teclas de volumen
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        volumeButtonReceiver = new VolumeButtonReceiver();
-        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
-        registerReceiver(volumeButtonReceiver, filter);
+        registerVolumeButtonReceiver();
 
         // Habilitar el botón de "Atrás" en la barra superior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -81,10 +75,22 @@ public class texto_voz extends AppCompatActivity {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
+        unregisterVolumeButtonReceiver(); // Asegúrate de desregistrar el receptor de eventos al destruir la actividad
+        super.onDestroy();
+    }
+
+    private void registerVolumeButtonReceiver() {
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        volumeButtonReceiver = new VolumeButtonReceiver();
+        volumeButtonReceiver.setMainActivityActive(false); // Desactiva el receptor para esta actividad
+        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
+        registerReceiver(volumeButtonReceiver, filter);
+    }
+
+    private void unregisterVolumeButtonReceiver() {
         if (volumeButtonReceiver != null) {
             unregisterReceiver(volumeButtonReceiver);
         }
-        super.onDestroy();
     }
 
 

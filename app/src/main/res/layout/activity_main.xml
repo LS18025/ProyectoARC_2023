@@ -1,39 +1,42 @@
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/relativeLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="#26334A"
 	android:orientation="horizontal">
 
 	<ImageButton
 		android:id="@+id/btnTexto"
-		android:layout_width="289dp"
-		android:layout_height="276dp"
-		android:layout_alignParentTop="true"
-		android:layout_alignParentEnd="true"
-		android:layout_alignParentRight="true"
-		android:layout_marginTop="50dp"
-		android:layout_marginEnd="61dp"
-		android:layout_marginRight="61dp"
-		android:fontFamily="sans-serif-black"
-		android:textColor="#FFFFFF"
+		android:layout_width="190dp"
+		android:layout_height="180dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="124dp"
+		android:layout_marginRight="120dp"
 		android:background="@drawable/texto_a_v"
-		android:text="Texto a Voz" />	
+		android:fontFamily="sans-serif-black"
+		android:text="Texto a Voz"
+		android:textColor="#FFFFFF"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<ImageButton
 		android:id="@+id/btnVoz"
-		android:layout_width="278dp"
-		android:layout_height="268dp"
-		android:layout_alignParentStart="true"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentTop="true"
-		android:layout_marginStart="66dp"
-		android:layout_marginLeft="66dp"
-		android:layout_marginTop="390dp"
+		android:layout_width="190dp"
+		android:layout_height="180dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginBottom="108dp"
 		android:background="@drawable/voz_atext"
 		android:fontFamily="sans-serif-black"
+		android:text="Voz a texto"
 		android:textColor="#FFFFFF"
-		android:text="Voz a texto" />
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
 
-	
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

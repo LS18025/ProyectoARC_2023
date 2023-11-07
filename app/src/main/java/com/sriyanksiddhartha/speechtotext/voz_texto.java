@@ -23,14 +23,10 @@ public class voz_texto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voz_texto);
+        registerVolumeButtonReceiver();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Modo Voz a texto");
 
-        // Registra el receptor de eventos para las teclas de volumen
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        volumeButtonReceiver = new VolumeButtonReceiver();
-        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
-        registerReceiver(volumeButtonReceiver, filter);
 
         txvResult = (TextView) findViewById(R.id.txvResult);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE); // Inicializa el objeto Vibrator
@@ -88,9 +84,21 @@ public class voz_texto extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         // Asegúrate de desregistrar el receptor de eventos al destruir la actividad
+        unregisterVolumeButtonReceiver();
+        super.onDestroy();
+
+    }
+    private void registerVolumeButtonReceiver() {
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        volumeButtonReceiver = new VolumeButtonReceiver();
+        volumeButtonReceiver.setMainActivityActive(false); // Desactiva el receptor para esta actividad
+        IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
+        registerReceiver(volumeButtonReceiver, filter);
+    }
+
+    private void unregisterVolumeButtonReceiver() {
         if (volumeButtonReceiver != null) {
             unregisterReceiver(volumeButtonReceiver);
         }
-        super.onDestroy();
     }
 }

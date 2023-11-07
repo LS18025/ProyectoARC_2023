@@ -5,11 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 public class VolumeButtonReceiver extends BroadcastReceiver {
+    private boolean isMainActivityActive = false;
+
+    public void setMainActivityActive(boolean isMainActivityActive) {
+        this.isMainActivityActive = isMainActivityActive;
+    }
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
 
-        if ("android.media.VOLUME_CHANGED_ACTION".equals(action)) {
+        if ("android.media.VOLUME_CHANGED_ACTION".equals(action) && isMainActivityActive) {
             int currentVolume = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_VALUE", 0);
             int previousVolume = intent.getIntExtra("android.media.EXTRA_PREV_VOLUME_STREAM_VALUE", 0);
 
