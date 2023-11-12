@@ -18,10 +18,12 @@
 		android:fontFamily="sans-serif-black"
 		android:text="Texto a Voz"
 		android:textColor="#FFFFFF"
+		app:layout_constraintBottom_toTopOf="@+id/btnVoz"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.021" />
 
 	<ImageButton
 		android:id="@+id/btnVoz"

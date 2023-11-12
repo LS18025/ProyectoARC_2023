@@ -4,16 +4,21 @@
     android:background="#26334A"
     android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txvResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="normal" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnSpeak"
+            android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/txvResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp"
+                    android:textStyle="normal" />
+
+        </ScrollView>
 
         <ImageView
             android:id="@+id/btnSpeak"
@@ -26,6 +31,5 @@
             android:gravity="center"
             android:onClick="getSpeechInput"
             android:src="@drawable/ic_mic" />
-
 
 </RelativeLayout>
